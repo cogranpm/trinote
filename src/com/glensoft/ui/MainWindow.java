@@ -208,8 +208,12 @@ public class MainWindow extends ApplicationWindow {
 					if (dlg.open() == Window.OK)
 					{
 						//alter the stuff here
+						if (dlg.getIsDirty())
+						{
+							dp.postNoteDetail(nd);
+						}
 					}
-					System.out.println("Double Clicked: " + nd.getBody());
+					
 				}
 				});
 	}

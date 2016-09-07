@@ -79,5 +79,26 @@ public class SqliteDataProvider {
 		return list;
 	}
 	
+	public void putNoteDetail(NoteDetail noteDetail)
+	{
+		
+	}
+	
+	public void postNoteDetail(NoteDetail noteDetail)
+	{
+		try(PreparedStatement statement = connection.prepareStatement("update notedetail set sourcecode = ?, comments = ?, body = ? where id = ?"))
+		{
+			statement.setString(1, noteDetail.getSourceCode());
+			statement.setString(2, noteDetail.getComments());
+			statement.setString(3, noteDetail.getBody());
+			statement.setLong(4, noteDetail.getId());
+			statement.executeUpdate();
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
 
 }

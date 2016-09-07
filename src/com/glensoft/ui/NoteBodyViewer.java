@@ -18,9 +18,12 @@ import org.eclipse.wb.swt.SWTResourceManager;
 public class NoteBodyViewer extends TitleAreaDialog {
 
 	private NoteDetail noteDetail;
+	private Boolean isDirty;
+	
 	private StyledText txtComments;
 	private StyledText txtBody;
 	private StyledText txtSourceCode;
+	
 	
 	public NoteDetail getNoteDetail() {
 		return noteDetail;
@@ -28,6 +31,16 @@ public class NoteBodyViewer extends TitleAreaDialog {
 
 	public void setNoteDetail(NoteDetail noteDetail) {
 		this.noteDetail = noteDetail;
+	}
+	
+	
+
+	public Boolean getIsDirty() {
+		return isDirty;
+	}
+
+	public void setIsDirty(Boolean isDirty) {
+		this.isDirty = isDirty;
 	}
 
 	/**
@@ -93,6 +106,22 @@ public class NoteBodyViewer extends TitleAreaDialog {
 		return new Point(width, height);
 		
 		//return new Point(640, 480);
+	}
+	
+
+	@Override
+	protected void okPressed() {
+		this.isDirty = false;
+		this.isDirty = noteDetail.getSourceCode() != this.txtSourceCode.getText();
+		this.isDirty = noteDetail.getComments() != this.txtComments.getText();
+		this.isDirty = noteDetail.getBody() != this.txtBody.getText();
+		if (this.isDirty)
+		{
+			noteDetail.setBody(this.txtBody.getText());
+			noteDetail.setSourceCode(this.txtSourceCode.getText());
+			noteDetail.setComments(this.txtComments.getText());
+		}
+		super.okPressed();
 	}
 
 }

@@ -4,6 +4,7 @@ package com.glensoft.ui;
 import java.io.File;
 import java.io.IOException;
 
+/*
 import org.neo4j.graphdb.Direction;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
@@ -12,10 +13,13 @@ import org.neo4j.graphdb.RelationshipType;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.neo4j.io.fs.FileUtils;
+*/
 
 public class NeoTest {
 	
 	private static final File DB_PATH = new File( "target/neo4j-hello-db" );
+	
+	/*
 	GraphDatabaseService graphDb;
 	
 	public void Test()
@@ -46,5 +50,6 @@ public class NeoTest {
             }
         } );
     }	
+    */
 
 }
