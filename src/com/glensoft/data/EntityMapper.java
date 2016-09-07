@@ -56,11 +56,23 @@ public class EntityMapper {
 			{
 				NoteDetail nb = new NoteDetail();
 				nb.setComments(rs.getString("comments"));
+				if (rs.wasNull())
+				{
+					nb.setComments("");
+				}
 				nb.setId(rs.getLong("id"));
 				nb.setName(rs.getString("name"));
 				nb.setNoteHeaderId(rs.getLong("noteheaderid"));
 				nb.setBody(rs.getString("body"));
+				if (rs.wasNull())
+				{
+					nb.setBody("");
+				}
 				nb.setSourceCode(rs.getString("sourcecode"));
+				if (rs.wasNull())
+				{
+					nb.setSourceCode("");
+				}
 				list.add(nb);
 			}
 		} catch (SQLException e) {

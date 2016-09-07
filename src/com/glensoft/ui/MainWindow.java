@@ -13,6 +13,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.window.ApplicationWindow;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.graphics.Point;
@@ -148,7 +149,10 @@ public class MainWindow extends ApplicationWindow {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(450, 300);
+		int height = this.getShell().getDisplay().getPrimaryMonitor().getClientArea().height;
+		int width = this.getShell().getDisplay().getPrimaryMonitor().getClientArea().width;
+		return new Point(width, height);
+		//return new Point(640, 480);
 	}
 	
 	@Override
@@ -198,6 +202,13 @@ public class MainWindow extends ApplicationWindow {
 				{
 					IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 					NoteDetail nd = (NoteDetail)selection.getFirstElement();
+					NoteBodyViewer dlg = new NoteBodyViewer(getParentShell());
+					dlg.setNoteDetail(nd);
+					dlg.create();
+					if (dlg.open() == Window.OK)
+					{
+						//alter the stuff here
+					}
 					System.out.println("Double Clicked: " + nd.getBody());
 				}
 				});
