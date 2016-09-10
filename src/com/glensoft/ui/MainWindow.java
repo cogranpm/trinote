@@ -60,20 +60,12 @@ public class MainWindow extends ApplicationWindow {
 			sashForm = new SashForm(container, SWT.NONE);
 			
 			lstNotebookViewer = new ListViewer(sashForm, SWT.BORDER | SWT.V_SCROLL);
+			lstNoteHeaderViewer = new ListViewer(sashForm, SWT.BORDER | SWT.V_SCROLL);
+			lstNoteBodyViewer = new ListViewer(sashForm, SWT.BORDER | SWT.V_SCROLL);
 			lstNotebook = lstNotebookViewer.getList();
-			{
-				SashForm sashBody = new SashForm(sashForm, SWT.NONE);
-				{
-					lstNoteHeaderViewer = new ListViewer(sashBody, SWT.BORDER | SWT.V_SCROLL);
-					lstNoteHeader = lstNoteHeaderViewer.getList();
-				}
-				{
-					lstNoteBodyViewer = new ListViewer(sashBody, SWT.BORDER | SWT.V_SCROLL);
-					lstNoteBody = lstNoteBodyViewer.getList();
-				}
-				sashBody.setWeights(new int[] {1, 1});
-			}
-			sashForm.setWeights(new int[] {1, 2});
+			lstNoteHeader = lstNoteHeaderViewer.getList();
+			lstNoteBody = lstNoteBodyViewer.getList();
+			sashForm.setWeights(new int[] {1, 1, 1});
 		}
 
 		Startup();
