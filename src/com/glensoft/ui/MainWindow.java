@@ -1,3 +1,7 @@
+/*********************
+ * how to run this when packaged
+ * java -XstartOnFirstThread -jar TriNote.jar
+ */
 package com.glensoft.ui;
 
 import com.glensoft.data.*;
