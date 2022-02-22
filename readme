@@ -1,0 +1,6 @@
+swt application
+incomplete, use trinotefx instead
+
+mavenized:
+mvn compile
+mvn exec:java
